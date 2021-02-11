@@ -56,3 +56,11 @@ docker-compose down && docker-compose up
 [1° React Getting Started](https://create-react-app.dev/docs/getting-started/)
 
 [2° Here’s How You Can Use Docker With React ](https://medium.com/better-programming/heres-how-you-can-use-docker-with-create-react-app-3ee3a972b04e)
+
+[3° Create React App + Docker — multi-stage build example](https://medium.com/@shakyShane/lets-talk-about-docker-artifacts-27454560384f)
+
+[4° Awesome Compose](https://github.com/docker/awesome-compose)
+
+[5° How To Create A Multi-Page Website With React In 5 Minutes](https://www.techomoro.com/how-to-create-a-multi-page-website-with-react-in-5-minutes/)
+
+[6° Ecoleta](https://github.com/diiegopaiivam/ecoleta)
