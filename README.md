@@ -16,6 +16,12 @@ npx create-react-app app
 ```sh
 docker-compose build
 ```
+4. Instalar boostrap
+
+```sh
+npm install react-bootstrap bootstrap
+```
+
 
 ## 🐳 Modo Desenvolvimento com Docker
 
