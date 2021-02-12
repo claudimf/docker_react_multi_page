@@ -1,6 +1,6 @@
-# docker_react
+# Docker + React Multi-Page
 
-👋 Olá, Seja Bem-vindo(a) ao 'Docker React'.
+👋 Olá, Seja Bem-vindo(a) ao 'Docker + React Multi-Page'.
 
 ## Criando a aplicação React:
 
