@@ -6,7 +6,7 @@
 
 1. Instalar o [NVM](https://www.treinaweb.com.br/blog/instalando-e-gerenciando-varias-versoes-do-node-js-com-nvm/) para versão mais atual possível
 
-2. Criar a aplicação 'frontend'(ou um nome que desejar):
+2. [Criar](https://create-react-app.dev/docs/getting-started/) a aplicação 'frontend'(ou um nome que desejar):
 ```sh
 npx create-react-app frontend
 ```
