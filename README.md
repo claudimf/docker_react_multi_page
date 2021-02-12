@@ -11,7 +11,7 @@
 npx create-react-app frontend
 ```
 
-3. 'Dockerizar' a aplicação criada, para isso crie um arquivo [docker-compose.yml](https://github.com/claudimf/docker_react/blob/main/docker-compose.yml) na raiz do projeto com o seguinte conteúdo:
+3. 'Dockerizar' a aplicação criada, para isso crie um arquivo [docker-compose.yml](https://github.com/claudimf/docker_react_multi_page/blob/main/docker-compose.yml) na raiz do projeto com o seguinte conteúdo:
 ```sh
 version: "3"
    
@@ -28,12 +28,12 @@ services:
     command: npm start
 ```
 
-4. Verifique a versão instalada do seu node no terminal, neste caso a versão é a 15.0.1 que será utilizada no passo 5° para configurar o [Dockerfile](https://github.com/claudimf/docker_react/blob/main/frontend/Dockerfile):
+4. Verifique a versão instalada do seu node no terminal, neste caso a versão é a 15.0.1 que será utilizada no passo 5° para configurar o [Dockerfile](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/Dockerfile):
 ```sh
 node --version
 ```
 
-5. Na pasta 'frontend' você deve criar o [Dockerfile](https://github.com/claudimf/docker_react/blob/main/frontend/Dockerfile) com o seguinte conteúdo:
+5. Na pasta 'frontend' você deve criar o [Dockerfile](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/Dockerfile) com o seguinte conteúdo:
 ```sh
 FROM node:15.0.1
 
@@ -64,7 +64,7 @@ docker-compose run --rm frontend npm uninstall -g create-react-app && npm i -g n
 docker-compose run --rm frontend npm install react-dom react-bootstrap bootstrap
 ```
 
-9. Alterar seu [Dockerfile](https://github.com/claudimf/docker_react/blob/main/frontend/Dockerfile) copiando o arquivo package-lock.json(auto gerado pelo npm) para dentro de seu container Docker:
+9. Alterar seu [Dockerfile](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/Dockerfile) copiando o arquivo package-lock.json(auto gerado pelo npm) para dentro de seu container Docker:
 ```sh
 FROM node:15.0.1
 WORKDIR /app
@@ -94,7 +94,7 @@ docker-compose up
 docker-compose run --rm frontend npm install react-router-dom
 ```
 
-2. Criar a pasta [components](https://github.com/claudimf/docker_react/tree/main/frontend/src/components)
+2. Criar a pasta [components](https://github.com/claudimf/docker_react_multi_page/tree/main/frontend/src/components)
 
 3. Na pasta acima citada iremos criar nosso componentes(Páginas HTML inteira ou Componentes HTML parciais) com a seguinte estrutura abaixo:
 ```sh
@@ -106,7 +106,7 @@ components
 
 ```
 
-4. No component [Header.jsx](https://github.com/claudimf/docker_react/blob/main/frontend/src/components/Header.jsx) iremos colocar o seguinte conteúdo:
+4. No component [Header.jsx](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/src/components/Header.jsx) iremos colocar o seguinte conteúdo:
 ```sh
 import React from "react";
 import { withRouter } from "react-router-dom";
@@ -145,7 +145,7 @@ export default withRouter(Header);
 
 criando assim um cabeçalho(header) com os links para a página principal de nosso projeto e para uma outra página de testes
 
-5. No component [Home.jsx](https://github.com/claudimf/docker_react/blob/main/frontend/src/components/Home.jsx) iremos colocar o seguinte conteúdo:
+5. No component [Home.jsx](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/src/components/Home.jsx) iremos colocar o seguinte conteúdo:
 ```sh
 import React from 'react';
 import { withRouter } from "react-router-dom";
@@ -163,7 +163,7 @@ export default withRouter(Home);
 
 ```
 
-5. No component [Pagina.jsx](https://github.com/claudimf/docker_react/blob/main/frontend/src/components/Pagina.jsx) iremos colocar o seguinte conteúdo:
+5. No component [Pagina.jsx](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/src/components/Pagina.jsx) iremos colocar o seguinte conteúdo:
 ```sh
 import React from 'react';
 import { withRouter } from "react-router-dom";
@@ -185,22 +185,57 @@ export default withRouter(Pagina);
 
 ```
 
-6. No component [index.jsx](https://github.com/claudimf/docker_react/blob/main/frontend/src/components/index.jsx) iremos colocar o seguinte conteúdo:
+6. No component [index.jsx](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/src/components/index.jsx) iremos colocar o seguinte conteúdo:
 ```sh
 export { default as Header } from "./Header"
 export { default as Home } from "./Home"
 export { default as Pagina } from "./Pagina"
 
 ```
-esse arquivo tem a função de exportar seus componentes aonde ele for importado, como no caso da importação no arquivo [App.js](https://github.com/claudimf/docker_react/blob/main/frontend/src/App.js)
+esse arquivo tem a função de exportar seus componentes aonde ele for importado, como no caso da importação no arquivo [App.js](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/src/App.js)
 
 
-7. No arquivo [App.js](https://github.com/claudimf/docker_react/blob/main/frontend/src/App.js) iremos configurar as páginas que queremos acessar com o [react-router-dom](https://reactrouter.com/web/guides/quick-start) através do componente importado "Route" da biblioteca.
+7. No arquivo [App.js](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/src/App.js) iremos configurar as páginas que queremos acessar com o [react-router-dom](https://reactrouter.com/web/guides/quick-start) através do componente importado "Route" da biblioteca.
 
 Após essas configurações você poderá verificar que o cabeçalho da aplicação contém os links abaixo e suas rotas estão funcionado:
 
 * [Homepage - localhost:3000](http://localhost:3000/)
 * [Página de testes - http://localhost:3000/pagina](http://localhost:3000/pagina)
+
+No final você terá a seguinte "árvore de arquivos/diretórios":
+```sh
+.
+├── docker-compose.yml
+├── frontend
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   ├── README.md
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── components
+│   │   │   ├── Header.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── index.js
+│   │   │   └── Pagina.jsx
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js
+│   │   └── setupTests.js
+│   └── yarn.lock
+└── README.md
+
+```
 
 ## 🐳 Caso você só queira baixar o projeto, poderá entrar no 'Modo Desenvolvimento com Docker':
 
