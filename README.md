@@ -2,26 +2,83 @@
 
 👋 Olá, Seja Bem-vindo(a) ao 'Docker React'.
 
-1. Atualizar npm, rodar no terminal:
+## Criando a aplicação React para 'Multi-Page':
+
+1. Instalar o [NVM](https://www.treinaweb.com.br/blog/instalando-e-gerenciando-varias-versoes-do-node-js-com-nvm/) para versão mais atual possível
+
+2. Criar a aplicação 'frontend'(ou um nome que desejar):
 ```sh
-npm uninstall -g create-react-app && npm i -g npm@latest && sudo npm cache clean -f
+npx create-react-app frontend
 ```
 
-2. Criar app:
+3. 'Dockerizar' a aplicação criada, para isso crie um arquivo docker-compose.yml na raiz do projeto com o seguinte conteúdo:
 ```sh
-npx create-react-app app
+version: "3"
+   
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+      - ./frontend/node_modules:/app/node_modules
+    command: npm start
 ```
 
-3. Construir projeto:
+4. Verifique a versão instalada do seu node no terminal, neste caso a versão é a 15.0.1 que será utilizada no passo 5° para configurar o Dockerfile:
+```sh
+node --version
+```
+
+5. Na pasta 'frontend' você deve criar o Dockerfile com o seguinte conteúdo:
+```sh
+FROM node:15.0.1
+
+WORKDIR /app
+
+COPY package.json /app/package.json
+
+RUN npm install
+RUN npm config set unsafe-perm true
+
+COPY . /app
+
+EXPOSE 3000
+```
+
+6. Construa sua aplicação:
 ```sh
 docker-compose build
 ```
-4. Instalar boostrap
 
+7. Atualizar npm do docker, rodando no terminal o seguinte comando:
 ```sh
-npm install react-bootstrap bootstrap
+docker-compose run --rm frontend npm uninstall -g create-react-app && npm i -g npm@latest && npm cache clean -f
 ```
 
+8. Instalar o [React-Boostrap](https://medium.com/code-prestige/react-bootstrap-a-fus%C3%A3o-entre-o-react-e-o-bootstrap-48e8bd318359)no seu container:
+```sh
+docker-compose run --rm frontend npm install react-dom react-bootstrap bootstrap
+```
+
+9. Alterar seu [Dockerfile](https://github.com/claudimf/docker_react/blob/main/frontend/Dockerfile) copiando o arquivo package-lock.json(auto gerado pelo npm) para dentro de seu container Docker:
+```sh
+FROM node:15.0.1
+WORKDIR /app
+
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
+
+RUN npm install
+RUN npm config set unsafe-perm true
+
+COPY . /app
+
+EXPOSE 3000
+```
 
 ## 🐳 Modo Desenvolvimento com Docker
 
@@ -72,3 +129,5 @@ docker-compose down && docker-compose up
 [6° Ecoleta](https://github.com/diiegopaiivam/ecoleta)
 
 [7° React-Bootstrap: a fusão entre o React e o Bootstrap](https://medium.com/code-prestige/react-bootstrap-a-fus%C3%A3o-entre-o-react-e-o-bootstrap-48e8bd318359)
+
+[8° Instalando e gerenciando várias versões do Node.js com NVM](https://www.treinaweb.com.br/blog/instalando-e-gerenciando-varias-versoes-do-node-js-com-nvm/)

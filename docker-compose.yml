@@ -1,13 +1,13 @@
 version: "3"
    
 services:
-  app:
-    build: ./app
-    container_name: app
+  frontend:
+    build: ./frontend
+    container_name: frontend
     restart: always
     ports:
       - 3000:3000
     volumes:
-      - ./app:/app
-      - /app/node_modules
+      - ./frontend:/app
+      - ./frontend/node_modules:/app/node_modules
     command: npm start
