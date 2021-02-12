@@ -238,7 +238,7 @@ No final você terá a seguinte "árvore de arquivos/diretórios":
 
 ```
 
-## Ponto de Anteção:
+## Ponto de atenção:
 
 No arquivo [gitignore](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/.gitignore) retire a pasta 'node_modules', assim você evitará de ter que criar toda ver que construir sua aplicação facilitando o deploy.
 
