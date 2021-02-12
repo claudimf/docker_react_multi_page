@@ -2,7 +2,7 @@
 
 👋 Olá, Seja Bem-vindo(a) ao 'Docker React'.
 
-## Criando a aplicação React para 'Multi-Page':
+## Criando a aplicação React:
 
 1. Instalar o [NVM](https://www.treinaweb.com.br/blog/instalando-e-gerenciando-varias-versoes-do-node-js-com-nvm/) para versão mais atual possível
 
@@ -59,7 +59,7 @@ docker-compose build
 docker-compose run --rm frontend npm uninstall -g create-react-app && npm i -g npm@latest && npm cache clean -f
 ```
 
-8. Instalar o [React-Boostrap](https://medium.com/code-prestige/react-bootstrap-a-fus%C3%A3o-entre-o-react-e-o-bootstrap-48e8bd318359)no seu container:
+8. Instalar o [React-Boostrap](https://medium.com/code-prestige/react-bootstrap-a-fus%C3%A3o-entre-o-react-e-o-bootstrap-48e8bd318359) no seu container:
 ```sh
 docker-compose run --rm frontend npm install react-dom react-bootstrap bootstrap
 ```
@@ -79,6 +79,34 @@ COPY . /app
 
 EXPOSE 3000
 ```
+
+10. Suba seu projeto:
+```sh
+docker-compose up
+```
+
+11. Para visualizar o sistema basta acessar no navegador no endereço: [localhost:3000](http://localhost:3000/)
+
+## Transformando sua aplicação React em ["Multi-Page"](https://www.techomoro.com/how-to-create-a-multi-page-website-with-react-in-5-minutes/):
+
+1. Instalar o [react-router-dom](https://reactrouter.com/web/guides/quick-start) no seu container em um novo terminal:
+```sh
+docker-compose run --rm frontend npm install react-router-dom
+```
+
+2. Criar a pasta [components](https://github.com/claudimf/docker_react/tree/main/frontend/src/components)
+
+3. Na pasta acima citada iremos criar nosso componentes(Páginas HTML inteira ou Componentes HTML parciais) com a seguinte estrutura abaixo:
+```sh
+components
+├─── Header.jsx
+├─── Home.jsx
+├─── index.jsx
+└─── Pagina.jsx
+
+```
+
+3° No arquivo [App.js](https://github.com/claudimf/docker_react/blob/main/frontend/src/App.js) iremos configurar as páginas que queremos acessar com 
 
 ## 🐳 Modo Desenvolvimento com Docker
 
@@ -131,3 +159,5 @@ docker-compose down && docker-compose up
 [7° React-Bootstrap: a fusão entre o React e o Bootstrap](https://medium.com/code-prestige/react-bootstrap-a-fus%C3%A3o-entre-o-react-e-o-bootstrap-48e8bd318359)
 
 [8° Instalando e gerenciando várias versões do Node.js com NVM](https://www.treinaweb.com.br/blog/instalando-e-gerenciando-varias-versoes-do-node-js-com-nvm/)
+
+[9° react-router-dom](https://reactrouter.com/web/guides/quick-start)
