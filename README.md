@@ -238,6 +238,10 @@ No final você terá a seguinte "árvore de arquivos/diretórios":
 
 ```
 
+## Ponto de Anteção:
+
+No arquivo [gitignore](https://github.com/claudimf/docker_react_multi_page/blob/main/frontend/.gitignore) retire a pasta 'node_modules', assim você evitará de ter que criar toda ver que construir sua aplicação facilitando o deploy.
+
 ## 🐳 Caso você só queira baixar o projeto, poderá entrar no 'Modo Desenvolvimento com Docker':
 
 Após instalar o docker e docker-compose, estando na pasta raiz do projeto, execute:

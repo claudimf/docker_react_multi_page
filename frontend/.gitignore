@@ -20,3 +20,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# eliminate dynamic cache
+/node_modules/.cache/.eslintcache
