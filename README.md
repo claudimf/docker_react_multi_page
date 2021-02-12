@@ -208,6 +208,7 @@ No final você terá a seguinte "árvore de arquivos/diretórios":
 ├── docker-compose.yml
 ├── frontend
 │   ├── Dockerfile
+|   ├── node_modules
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── public
