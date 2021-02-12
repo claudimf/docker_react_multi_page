@@ -7,7 +7,7 @@ class Pagina extends React.Component {
     return(
       <Row className="no-gutters justify-content-center mt-5">
         <Col md={12} className="text-center my-5">
-          <h1>Página teste</h1>
+          <h1>Esta é a Página teste</h1>
         </Col>
       </Row>
     )
