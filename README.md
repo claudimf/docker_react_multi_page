@@ -2,6 +2,14 @@
 
 👋 Olá, Seja Bem-vindo(a) ao 'Docker + React Multi-Page'.
 
+### Permissões de arquivos:
+
+Ao se adicionar libs ou qualquer outro comando que crie arquivos dentro do contâiner Docker o proprietário para edição se torna o contâiner, sendo assim você precisará rodar o comando abaixo para alterar essas permissões e você poder editar:
+
+```sh
+sudo chown -R $USER:$USER .
+```
+
 ## Criando a aplicação React:
 
 1. Instalar o [NVM](https://www.treinaweb.com.br/blog/instalando-e-gerenciando-varias-versoes-do-node-js-com-nvm/) para versão mais atual possível
